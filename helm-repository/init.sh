@@ -4,7 +4,7 @@
   
 cd helm-repository  
 
-for chart in `find ../charts/stable -type d -depth 1`
+for chart in `find ../charts/stable -type d -maxdepth 1`
 do
   echo Processing: $chart
   helm lint $chart
