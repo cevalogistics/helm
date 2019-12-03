@@ -1,4 +1,4 @@
 <html>
 <img src='./CEVA_EAG_logo.jpg'/> 
-<h1>Ceva Logistics Public Helm Charts</h1>
+<h3>Ceva Logistics Public Helm Charts - Directory</h3>
 </html>
