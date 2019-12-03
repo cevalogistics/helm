@@ -29,7 +29,7 @@ for chart in `find . -name '*.tgz'`
 do
   pc=`echo $chart | sed -e 's/\.tgz//g' -e s~\.\/~~g`
   pclink=`echo $chart | sed -e 's/\.tgz//g' -e s~\.\/~~g -e 's/\(.*\)-.*/\1/'`
-  echo  "<li><a href='https://github.com/cevalogistics/helm/tree/master/charts/stable/$pclink' target='_$pclink' >$pc</a></li>"  >> index.md 
+  echo  "<li><a href='https://github.com/cevalogistics/helm/tree/master/charts/stable/$pclink' target='_blank' >$pc</a></li>"  >> index.md 
 done
 echo "</ul>" >> index.md
 
