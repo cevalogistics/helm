@@ -2,8 +2,7 @@
 
 
   
-
-cd ../helm-repository
+cd helm-repository  
 
 helm lint ../charts/stable/*
 
