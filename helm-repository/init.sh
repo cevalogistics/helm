@@ -12,8 +12,8 @@ helm repo index --url https://cevalogistics.github.io/ . 2>/dev/null
 mkdir work  && cd work
  
 
-git config user.email "$GIT_EMAIL"
-git config user.name "$GIT_USERNAME"
+git config --global user.email "$GIT_EMAIL"
+git config --global user.name "$GIT_USERNAME"
 
 git clone https://github.com/cevalogistics/cevalogistics.github.io
 
