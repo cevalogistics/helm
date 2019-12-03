@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: multi-cluster-dns
+spec:
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: multi-cluster-dns
+  template:
+    metadata:
+      labels:
+        app: multi-cluster-dns
+    spec:
+      serviceAccountName: multi-cluster-dns
+      containers:
+      - name: multi-cluster-dns
+        image: cevalogistics/external-dns:0.91
+        imagePullPolicy: Always
+        args:
+        - --source=service
+        - --publish-internal-services
+        - --source=ingress
+        - --provider=coredns
+        - --log-level={{ .Values.logLevel }}
+        - --registry=txt
+        - --txt-owner-id={{ .Values.ownerId }}
+ ### New
+ #       - --source=crd 
+ #       - --crd-source-apiversion=multiclusterdns.kubefed.k8s.io/v1alpha1 
+ #       - --crd-source-kind=DNSEndpoint 
+ #       # - --txt-prefix=cname
+        env:
+        - name: ETCD_URLS
+          value: {{ .Values.etcdURL }}
+        - name: COREDNS_ONPREM_ADDRESS_SUPPORT
+          value: "{{ .Values.CoreDNSOnPremAddressSupport }}"
+

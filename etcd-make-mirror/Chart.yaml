@@ -1,0 +1,11 @@
+name: etcd-make-mirror
+home: https://github.com/external-dns
+version: 0.0.1
+appVersion: 0.0.1
+description: this is an implementation of external-dns
+icon: https://raw.githubusercontent.com/coreos/etcd/master/logos/etcd-horizontal-color.png
+sources:
+- https://github.com/coreos/etcd
+maintainers:
+- name: rsliotta
+  email: robert.liotta@cevalogistics.com

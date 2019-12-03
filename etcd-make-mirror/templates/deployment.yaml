@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ template "etcd.fullname" . }}
+spec:
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: {{ template "etcd.fullname" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ template "etcd.fullname" . }}
+    spec:
+      containers:
+      - name: {{ template "etcd.fullname" . }}
+        image: "quay.io/coreos/etcd:latest"
+        imagePullPolicy: Always
+        command:
+          - "/bin/sh"
+          - "-ec"
+          - |
+            PATH=/usr/local/bin:$PATH
+            echo "Beginning Replica"
+            echo ""
+            echo "ENDPOINT: ${ETCD_ENDPOINT}"
+            echo "REPLICA: ${ETCD_REPLICA}"
+            /usr/local/bin/etcdctl  --endpoints=${ETCD_ENDPOINT} make-mirror ${ETCD_REPLICA}
+        env:
+        - name: ETCDCTL_API
+          value: "3"
+        - name: ETCD_REPLICA
+          value: {{ .Values.replicaEndpoint}}
+        - name: ETCD_ENDPOINT
+          value: {{ .Values.endpoint}}
+      restartPolicy: Always
