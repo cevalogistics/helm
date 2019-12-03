@@ -18,6 +18,9 @@ cd cevalogistics.github.io
 
 cp ../../* . 2>/dev/null
 
+git config --global user.email "robert.liotta@cevalogistics.com"
+git config --global user.name "Robert Liotta"
+
 git add .
 git commit -m 'Refresh Repository'
 git push
