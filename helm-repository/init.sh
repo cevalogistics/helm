@@ -12,7 +12,7 @@ helm repo index --url https://cevalogistics.github.io/ .
 
 mkdir work
 cd work
-git clone https://github.com/cevalogistics.github.io
+git clone https://github.com/cevalogistics/cevalogistics.github.io
 
 cp ../* .
 git add .
