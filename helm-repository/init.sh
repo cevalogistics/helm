@@ -30,7 +30,7 @@ echo "<ul>" >> index.md
 for chart in `find . -name '*.tgz'`
 do
   pc=`echo $chart | sed -e 's/\.tgz//g' -e s/\.\//g`
-  echo  "$pc<br/>"  >> index.md
+  echo  "<li>$pc</li>"  >> index.md
 done
 echo "</ul>" >> index.md
 
