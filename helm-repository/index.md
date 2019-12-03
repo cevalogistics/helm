@@ -3,7 +3,7 @@
 <h3>Ceva Logistics Public Helm Charts - Directory</h3>
 
 
-<strong>This is a HELM Repository</strong> - < href='https://cevalogistics.github.io'>https://cevalogistics.github.io</a><br>
+<strong>This is a HELM Repository</strong> - <a href='https://cevalogistics.github.io'>https://cevalogistics.github.io</a><br>
 
 This project is maintained in an automated fashion from the <a href='https://github.com/cevalogistics/helm'>https://github.com/cevalogistics/helm</a> project.
 
