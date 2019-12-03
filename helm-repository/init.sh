@@ -30,7 +30,8 @@ echo "<ul>" >> index.md
 for chart in `find . -name '*.tgz'`
 do
   pc=`echo $chart | sed -e 's/\.tgz//g' -e s~\.\/~~g`
-  echo  "<li><a href='https://github.com/cevalogistics/helm/tree/master/charts/stable/$pc' >$pc</a></li>"  >> index.md
+  pclink=`echo $chart | sed -e 's/\.tgz//g' -e s~\.\/~~g -e 's/\(.*\)-.*/\1/'`
+  echo  "<li><a href='https://github.com/cevalogistics/helm/tree/master/charts/stable/$pclink' >$pc</a></li>"  >> index.md
 done
 echo "</ul>" >> index.md
 
