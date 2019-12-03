@@ -5,9 +5,7 @@
 cd helm-repository  
 
 helm lint ../charts/stable/*
-
 helm package ../charts/stable/*
-
 helm repo index --url https://cevalogistics.github.io/ .
 
 mkdir work
@@ -18,8 +16,9 @@ cd cevalogistics.github.io
 
 cp ../../* . 2>/dev/null
 
-git config --global user.email "robert.liotta@cevalogistics.com"
-git config --global user.name "Robert Liotta"
+git config --global user.email "$GIT_EMAIL"
+git config --global user.name "$GIT_USERNAME"
+git config --global user.password "$GIT_PASSWORD"
 
 git add .
 git commit -m 'Refresh Repository'
