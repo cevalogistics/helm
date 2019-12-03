@@ -6,15 +6,16 @@ cd helm-repository
 
 helm lint ../charts/stable/*
 helm package ../charts/stable/*
+
 helm repo index --url https://cevalogistics.github.io/ .
 
 mkdir work
 cd work
  
 
-git config --global user.email "$GIT_EMAIL"
-git config --global user.name "$GIT_USER"
-git config --global user.password "$GIT_PASSWORD"
+git config user.email "$GIT_EMAIL"
+git config user.name "$GIT_USERNAME"
+git config user.password "$GIT_PASSWORD"
 
 git clone https://github.com/cevalogistics/cevalogistics.github.io
 
