@@ -14,7 +14,10 @@ mkdir work
 cd work
 git clone https://github.com/cevalogistics/cevalogistics.github.io
 
-cp ../* .
+cd cevalogistics.github.io
+
+cp ../../* . 2>/dev/null
+
 git add .
 git commit -m 'Refresh Repository'
 git push
