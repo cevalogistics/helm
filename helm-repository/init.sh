@@ -32,6 +32,7 @@ do
   echo  "<li><a href='https://github.com/cevalogistics/helm/tree/master/charts/stable/$pclink' target='_blank' >$pc</a></li>"  >> index.md 
 done
 echo "</ul>" >> index.md
+echo "</html>" >> index.md
 
 
 
