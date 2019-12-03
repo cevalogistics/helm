@@ -24,6 +24,7 @@ cd cevalogistics.github.io
 
 cp ../../* . 2>/dev/null
 
+echo "<hr/>" >> index.md
 echo "<ul>" >> index.md
 for chart in `find . -name '*.tgz'`
 do
