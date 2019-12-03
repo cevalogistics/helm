@@ -27,8 +27,9 @@ cp ../../* . 2>/dev/null
 
 for chart in `find . -name '*.tgz'`
 do
-  
-  echo " * `echo $chart | sed -e 's/\.tgz//g'` " >> index.md
+  pc=`echo $chart | sed -e 's/\.tgz//g'`
+  echo  " * $pc"  >> index.md
+done
 
 git add .
 git commit -m 'Refresh Repository'
