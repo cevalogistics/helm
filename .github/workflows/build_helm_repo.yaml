@@ -1,0 +1,15 @@
+#Workflows
+name: helm_repo
+on: [push]
+
+jobs:
+  build_helm_repo:
+    runs-on: ubuntu-latest
+    name: build_helm_repo
+    steps:
+    - name: Build Action 
+      env: # Or as an environment variable
+          docker_login: ${{ secrets.docker_login }}
+          docker_token: ${{ secrets.docker_token }}      
+      run: |
+        bash helm-repository/init.sh
