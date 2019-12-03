@@ -5,7 +5,8 @@
 cd helm-repository  
 
 mkdir -p /home/runner/.helm/repository/local
-for chart in `find ../charts/stable -type d -maxdepth 1`
+touch /home/runner/.helm/repository/local/index.yaml
+for chart in `find ../charts/stable/ -type d -maxdepth 1`
 do
   echo Processing: $chart
   helm lint $chart
