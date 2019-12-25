@@ -28,7 +28,7 @@ spec:
               echo ""
               echo "ENDPOINT: ${ETCD_ENDPOINT}"
               echo "REPLICA: ${ETCD_REPLICA}"
-              /usr/local/bin/etcdctl  --command-timeout=120 --endpoints=${ETCD_ENDPOINT} make-mirror ${ETCD_REPLICA}
+              /usr/local/bin/etcdctl  --command-timeout=120s --endpoints=${ETCD_ENDPOINT} make-mirror ${ETCD_REPLICA}
               sleep 30
             done
         env:
