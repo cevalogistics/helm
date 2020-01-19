@@ -20,7 +20,6 @@ spec:
     {{- if (and (eq .Values.serviceType "NodePort") (not (empty .Values.service.nodePorts.etcdClient)))}}
     nodePort: {{ .Values.service.nodePorts.etcdClient }} 
     {{- end }}
-  clusterIP: None
   selector:
     app: {{ template "etcd.name" . }}
     release: {{ .Release.Name | quote }}
