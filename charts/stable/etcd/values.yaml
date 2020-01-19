@@ -5,8 +5,12 @@
 
 peerPort: 2380
 clientPort: 2379
+type: ClusterIP
 component: "etcd"
 replicas: 3
+service:
+  nodeports:
+    etcd-client: 32000
 image:
   repository: "k8s.gcr.io/etcd-amd64"
   tag: "3.2.26"

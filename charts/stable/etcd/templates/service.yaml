@@ -11,11 +11,15 @@ metadata:
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     app: {{ template "etcd.name" . }}
 spec:
+  type: {{ .Values.serviceType }}
   ports:
   - port: {{ .Values.peerPort }}
     name: etcd-server
   - port: {{ .Values.clientPort }}
     name: etcd-client
+    {{- if (and (eq .Values.serviceType "NodePort") (not (empty .Values.service.nodePorts.https)))}}
+    nodePort: {{ .Values.service.nodePorts.etcd-client }}
+    {{- end }}
   clusterIP: None
   selector:
     app: {{ template "etcd.name" . }}
