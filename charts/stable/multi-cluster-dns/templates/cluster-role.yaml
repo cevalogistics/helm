@@ -14,7 +14,7 @@ rules:
   verbs: ["get","watch","list"]
 - apiGroups: [""]
   resources: ["nodes"]
-  verbs: ["list"]
+  verbs: ["list","get","watch"]
 - apiGroups: ["multiclusterdns.kubefed.k8s.io"]
   resources: ["DNSEndpoint","dnsendpoints","dnsendpoints/status"]
   verbs: ["get","watch","list","update"]

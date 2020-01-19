@@ -21,12 +21,16 @@ spec:
           - "/bin/sh"
           - "-ec"
           - |
-            PATH=/usr/local/bin:$PATH
-            echo "Beginning Replica"
-            echo ""
-            echo "ENDPOINT: ${ETCD_ENDPOINT}"
-            echo "REPLICA: ${ETCD_REPLICA}"
-            /usr/local/bin/etcdctl  --endpoints=${ETCD_ENDPOINT} make-mirror ${ETCD_REPLICA}
+            while [ 1==1 ] 
+            do
+              PATH=/usr/local/bin:$PATH
+              echo "Beginning Replica"
+              echo ""
+              echo "ENDPOINT: ${ETCD_ENDPOINT}"
+              echo "REPLICA: ${ETCD_REPLICA}"
+              /usr/local/bin/etcdctl  --command-timeout=120s --endpoints=${ETCD_ENDPOINT} make-mirror ${ETCD_REPLICA}
+              sleep 30
+            done
         env:
         - name: ETCDCTL_API
           value: "3"
