@@ -18,7 +18,7 @@ spec:
   - port: {{ .Values.clientPort }}
     name: etcd-client
     {{- if (and (eq .Values.serviceType "NodePort") (not (empty .Values.service.nodePorts.https)))}}
-    nodePort: {{ .Values.service.nodePorts.etcd-client }}
+    nodePort: {{ .Values.service.nodePorts.etcdClient }}
     {{- end }}
   clusterIP: None
   selector:
