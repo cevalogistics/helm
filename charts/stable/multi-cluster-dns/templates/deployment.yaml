@@ -16,7 +16,7 @@ spec:
       serviceAccountName: multi-cluster-dns
       containers:
       - name: multi-cluster-dns
-        image: cevalogistics/external-dns:0.5.7.15
+        image: cevalogistics/external-dns:0.5.7.16
         imagePullPolicy: Always
         args:
         - --source=service
