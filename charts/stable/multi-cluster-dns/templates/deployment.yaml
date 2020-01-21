@@ -20,7 +20,6 @@ spec:
         imagePullPolicy: Always
         args:
         - --source=service
-        - --publish-internal-services
         - --source=ingress
         - --provider=coredns
         - --log-level={{ .Values.logLevel }}
