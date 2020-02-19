@@ -91,7 +91,7 @@ spec:
         {{- if .Values.etcd.readinessProbe.enabled }}
         readinessProbe:
           httpGet:
-            path: /health
+            path: /metrics
             port: 2379
           initialDelaySeconds: {{ .Values.etcd.readinessProbe.initialDelaySeconds }}
           periodSeconds: {{ .Values.etcd.readinessProbe.periodSeconds }}
