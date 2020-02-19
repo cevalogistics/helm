@@ -58,6 +58,45 @@ persistentVolume:
   ##
   # storageClass: "-"
 
+
+# etcd
+etcd:
+  name: etcd-operator
+  replicaCount: 1
+  image:
+    repository: quay.io/coreos/etcd-operator
+    tag: v0.9.4
+    pullPolicy: Always
+  resources:
+    cpu: 100m
+    memory: 128Mi
+  ## Node labels for etcd-operator pod assignment
+  ## Ref: https://kubernetes.io/docs/user-guide/node-selection/
+  nodeSelector: {}
+  ## additional command arguments go here; will be translated to `--key=value` form
+  ## e.g., analytics: true
+  commandArgs: {}
+  tolerations: []
+  ## Configurable health checks against the /readyz endpoint that etcd-operator exposes
+  readinessProbe:
+    enabled: false
+    initialDelaySeconds: 0
+    periodSeconds: 10
+    timeoutSeconds: 1
+    successThreshold: 1
+    failureThreshold: 3
+  livenessProbe:
+    enabled: false
+    initialDelaySeconds: 0
+    periodSeconds: 10
+    timeoutSeconds: 1
+    successThreshold: 1
+    failureThreshold: 3
+
+
+
+
+
 ## This is only available when persistentVolume is false:
 ## If persistentVolume is not enabled, one can choose to use memory mode for ETCD by setting memoryMode to "true".
 ## The system will create a volume with "medium: Memory"

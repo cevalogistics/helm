@@ -222,6 +222,29 @@ spec:
                 --initial-cluster ${PEERS} \
                 --initial-cluster-state new \
                 --data-dir /var/run/etcd/default.etcd
+        {{- if .Values.etcd.livenessProbe.enabled }}
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 2379
+          initialDelaySeconds: {{ .Values.etcd.livenessProbe.initialDelaySeconds }}
+          periodSeconds: {{ .Values.etcd.livenessProbe.periodSeconds }}
+          timeoutSeconds: {{ .Values.etcd.livenessProbe.timeoutSeconds }}
+          successThreshold: {{ .Values.etcd.livenessProbe.successThreshold }}
+          failureThreshold: {{ .Values.etcd.livenessProbe.failureThreshold }}
+        {{- end}}
+        {{- if .Values.etcd.readinessProbe.enabled }}
+       readinessProbe:
+          httpGet:
+            path: /health
+            port: 2379
+          initialDelaySeconds: {{ .Values.etcd.readinessProbe.initialDelaySeconds }}
+          periodSeconds: {{ .Values.etcd.readinessProbe.periodSeconds }}
+          timeoutSeconds: {{ .Values.etcd.readinessProbe.timeoutSeconds }}
+          successThreshold: {{ .Values.etcd.readinessProbe.successThreshold }}
+          failureThreshold: {{ .Values.etcd.readinessProbe.failureThreshold }}
+        {{- end }}
+
       volumes:
       {{- if or .Values.auth.client.enableAuthentication (and .Values.auth.client.secureTransport ) }}
       - name: etcd-client-certs
