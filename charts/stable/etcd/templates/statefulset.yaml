@@ -89,7 +89,7 @@ spec:
           failureThreshold: {{ .Values.etcd.livenessProbe.failureThreshold }}
         {{- end}}
         {{- if .Values.etcd.readinessProbe.enabled }}
-        readinessProbe:
+         readinessProbe:
           httpGet:
             path: /health
             port: 2379
