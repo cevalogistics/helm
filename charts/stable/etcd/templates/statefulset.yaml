@@ -253,7 +253,7 @@ spec:
         hostPath:
          path: /etc/pki
          type: Directory
-      {{- if or .Values.auth.client.enableAuthentication (and .Values.auth.client.secureTransport ) }}
+      {{- if and .Values.auth.client.enableAuthentication .Values.auth.client.secureTransport  }}
       - name: etcd-client-certs
         secret:
           secretName: {{ required "A secret containinig the client certificates is required" .Values.auth.client.existingSecret }}
