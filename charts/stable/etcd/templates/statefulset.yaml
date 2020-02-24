@@ -100,6 +100,9 @@ spec:
           failureThreshold: {{ .Values.etcd.readinessProbe.failureThreshold }}
         {{- end }}
         volumeMounts:
+        - name: etcd-peer-certs
+          mountPath: /etc/ssl/certs
+          readOnly: true
         - name: datadir
           mountPath: /var/run/etcd
         {{- if or .Values.auth.client.enableAuthentication (and .Values.auth.client.secureTransport ) }}
@@ -246,6 +249,10 @@ spec:
                 --data-dir /var/run/etcd/default.etcd
 
       volumes:
+      - name: etcd-peer-certs
+        hostPath:
+         path: /etc/ssl/certs
+         type: Directory
       {{- if or .Values.auth.client.enableAuthentication (and .Values.auth.client.secureTransport ) }}
       - name: etcd-client-certs
         secret:
