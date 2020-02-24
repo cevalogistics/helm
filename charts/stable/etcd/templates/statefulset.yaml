@@ -101,7 +101,7 @@ spec:
         {{- end }}
         volumeMounts:
         - name: etcd-peer-certs
-          mountPath: /etc/ssl/certs
+          mountPath: /etc/pki
           readOnly: true
         - name: datadir
           mountPath: /var/run/etcd
@@ -251,7 +251,7 @@ spec:
       volumes:
       - name: etcd-peer-certs
         hostPath:
-         path: /etc/ssl/certs
+         path: /etc/pki
          type: Directory
       {{- if or .Values.auth.client.enableAuthentication (and .Values.auth.client.secureTransport ) }}
       - name: etcd-client-certs
