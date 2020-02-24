@@ -255,7 +255,7 @@ spec:
          type: Directory
       {{- if and .Values.auth.client.enableAuthentication .Values.auth.client.secureTransport  }}
       - name: etcd-client-certs
-        secret:
+        secret:   
           secretName: {{ required "A secret containinig the client certificates is required" .Values.auth.client.existingSecret }}
           defaultMode: 256
       {{- end }}      
