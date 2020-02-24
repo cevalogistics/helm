@@ -105,7 +105,7 @@ spec:
           readOnly: true
         - name: datadir
           mountPath: /var/run/etcd
-        {{- if or .Values.auth.client.enableAuthentication (and .Values.auth.client.secureTransport ) }}
+        {{- if and .Values.auth.client.enableAuthentication  .Values.auth.client.secureTransport  }}
         - name: etcd-client-certs
           mountPath: /opt/etcd/certs/client/
           readOnly: true
